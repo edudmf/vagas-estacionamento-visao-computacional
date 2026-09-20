@@ -2,7 +2,7 @@ README, RELATÓRIO TÉCNICO
 Sistematização: Sistema de Visão Computacional para Detecção e Segmentação de Vagas de Estacionamento
 Disciplina: Visão Computacional e Reconhecimento de Padrões, UniCEUB
 Professor: Prof. Dr. Romes Heriberto Pires de Araújo
-Integrantes: Higo Soares do Lago, Paulo Victor Torres Martins, Eduardo Deodoro de Moraes Florindo, Lúcio Flávio Vilar de Azevedo
+Integrantes: Higo Soares do Lago, Paulo Victor Torres Martins, Eduardo Deodoro de Moraes Florindo e Lúcio Flávio Vilar de Azevedo
 
 1. Problema e cenário
 
