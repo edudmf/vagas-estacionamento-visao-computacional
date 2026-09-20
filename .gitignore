@@ -4,3 +4,7 @@
 *.avi
 *.pt
 runs/
+entrega_completa.html
+notebook_render.html
+_notebook_para_pdf.ipynb
+*.pdf
