@@ -22,13 +22,13 @@ A análise exploratória cobriu três frentes:
 
 3.1 Detecção de objetos
 
-Fine-tuning do modelo YOLOv8n (Ultralytics), pré-treinado no COCO, usando o dataset Parking Places. Hiperparâmetros: 50 épocas, imagem de entrada 640x640, batch size 16, splits fixos gerados pelo Roboflow (treino/validação/teste).
+Fine-tuning do modelo YOLOv8n (Ultralytics), pré-treinado no YOLO, usando o dataset Parking Places. Hiperparâmetros: 50 épocas, imagem de entrada 640x640, batch size 16, splits fixos gerados pelo Roboflow (treino/validação/teste).
 
 3.2 Segmentação
 
 O dataset de origem só tem anotação de bounding box, sem máscara de segmentação, nenhuma das três versões publicadas pelo autor no Roboflow Universe inclui polígono. Diante disso, avaliamos duas rotas: anotar manualmente uma amostra com ferramenta de polígono (ex.: Smart Polygon do Roboflow), ou adaptar um modelo de segmentação já pré-treinado ao domínio do projeto. Optamos pela segunda, por uma razão de prazo (o projeto tem menos de um mês entre abertura e entrega, e anotar uma amostra com qualidade suficiente para treinar um segmentador consumiria a maior parte do tempo restante) e por uma razão técnica (o enunciado da sistematização permite explicitamente treinar OU adaptar o modelo de segmentação no mesmo domínio, não exige fine-tuning obrigatório).
 
-A adaptação feita: modelo YOLOv8n-seg (Ultralytics), pré-treinado no COCO, aplicado sobre as mesmas imagens e o mesmo vídeo do estacionamento (mesmo domínio do cenário), restringindo a inferência às classes de veículo do COCO (carro, ônibus, caminhão, classes 2, 5 e 7) e com limiar de confiança ajustado para 0,10, calibrado empiricamente para capturar veículos parcialmente visíveis ou em ângulos incomuns sem gerar excesso de ruído. O resultado é uma segmentação de instância de veículos (carro estacionado ou em movimento), não uma segmentação direta de status de vaga (busy/free); a comparação visual entre as caixas do detector treinado e as máscaras do segmentador adaptado, no mesmo frame, está disponível no notebook. Essa decisão e sua limitação estão detalhadas na seção 6.
+A adaptação feita: modelo YOLOv8n-seg (Ultralytics), pré-treinado no YOLO, aplicado sobre as mesmas imagens e o mesmo vídeo do estacionamento (mesmo domínio do cenário), restringindo a inferência às classes de veículo do YOLO (carro, ônibus, caminhão, classes 2, 5 e 7) e com limiar de confiança ajustado para 0,10, calibrado empiricamente para capturar veículos parcialmente visíveis ou em ângulos incomuns sem gerar excesso de ruído. O resultado é uma segmentação de instância de veículos (carro estacionado ou em movimento), não uma segmentação direta de status de vaga (busy/free); a comparação visual entre as caixas do detector treinado e as máscaras do segmentador adaptado, no mesmo frame, está disponível no notebook. Essa decisão e sua limitação estão detalhadas na seção 6.
 
 3.3 Vídeo e rastreamento
 
